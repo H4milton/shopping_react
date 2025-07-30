@@ -2,30 +2,38 @@
 
 import React, { useState } from "react";
 import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
-import { Product } from "../types/types";
+import { Product, ProductInCart } from "../types/types";
 import Image from "next/image";
 
 type CardProductProps = {
   product: Product;
+  addToCart: (product: ProductInCart) => void;
+  removeFromCart: (name: string) => void;
 };
 
-export default function CardProduct({ product }: CardProductProps) {
+export default function CardProduct({
+  product,
+  addToCart,
+  removeFromCart,
+}: CardProductProps) {
   const [quantity, setQuantity] = useState(0);
   const stock = product.stock ?? 0;
 
   const isOutOfStock = stock === 0;
-  const isStockLimitReached = quantity >= stock;
+  // const isStockLimitReached = quantity >= stock;
   const handleIncrement = () => {
-    setQuantity((prevQuantity) => {
-      if (prevQuantity < stock) {
-        return prevQuantity + 1;
-      }
-      return prevQuantity;
-    });
+    if (quantity < stock) {
+      addToCart({ ...product, quantity: 1 });
+      setQuantity(quantity + 1);
+    }
   };
 
+  // const handleDecrement = () => {
+  //   setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
+  // };
   const handleDecrement = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
+    removeFromCart(product.name);
+    setQuantity(quantity - 1);
   };
 
   return (
@@ -86,6 +94,7 @@ export default function CardProduct({ product }: CardProductProps) {
             <span className="font-bold">{quantity}</span>
             <button
               className="cursor-pointer hover:bg-white rounded-full hover:text-orange-500 transition-colors duration-200"
+              // onClick={handleIncrement}
               onClick={handleIncrement}
             >
               <FiPlusCircle className="text-lg" />

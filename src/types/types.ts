@@ -11,6 +11,10 @@ export interface Product {
   stock: number;
 }
 
+export interface ProductInCart extends Product {
+  quantity: number;
+}
+
 // // Esto también funcionaría perfectamente
 // export type Product = {
 //   image: { /* ... */ };
