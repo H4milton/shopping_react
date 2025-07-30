@@ -21,6 +21,7 @@ export default function CartModal({ open, onClose }: CartModalProps) {
   return (
     <dialog
       open={open}
+      onClick={handleBackdropClick}
       className="bg-black/50 w-full h-full  top-0 left-0 fixed z-50 flex items-center justify-center"
     >
       <div className="bg-white rounded-lg p-4 m-10 w-[400px] relative">
