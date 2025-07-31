@@ -4,9 +4,14 @@ import { ProductInCart } from "@/types/types";
 
 interface CartItemsProps {
   product: ProductInCart;
+  removeFromCart: (name: string) => void;
 }
 
-export default function CartItems({ product }: CartItemsProps) {
+export default function CartItems({ product, removeFromCart }: CartItemsProps) {
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.name);
+  };
+
   return (
     <div className="flex justify-between items-center border-transparent border-b-gray-300 border-1">
       <div>
@@ -19,7 +24,11 @@ export default function CartItems({ product }: CartItemsProps) {
       </div>
       <div>
         <button>
-          <FiXCircle className="text-lg" />
+          <FiXCircle
+            className="text-lg"
+            // onClick={() => removeFromCart(product.name)}
+            onClick={handleRemoveFromCart}
+          />
         </button>
       </div>
     </div>

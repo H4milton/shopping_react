@@ -6,14 +6,14 @@ interface CardContainerProps {
   products: Product[];
   productsInCart: ProductInCart[];
   addToCart: (product: ProductInCart) => void;
-  removeFromCart: (name: string) => void;
+  dismFromCart: (name: string) => void;
 }
 
 export default function CardContainer({
   products,
   productsInCart,
   addToCart,
-  removeFromCart,
+  dismFromCart,
 }: CardContainerProps) {
   return (
     <div className="grid gap-8 md:grid-cols-3 mb-6 w-[327px] md:w-[688px]">
@@ -27,7 +27,7 @@ export default function CardContainer({
             product={product}
             quantity={quantityInCart}
             addToCart={addToCart}
-            removeFromCart={removeFromCart}
+            dismFromCart={dismFromCart}
           />
         );
       })}

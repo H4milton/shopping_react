@@ -9,14 +9,14 @@ type CardProductProps = {
   product: Product;
   quantity: number;
   addToCart: (product: ProductInCart) => void;
-  removeFromCart: (name: string) => void;
+  dismFromCart: (name: string) => void;
 };
 
 export default function CardProduct({
   product,
   quantity, // 👈 viene desde arriba
   addToCart,
-  removeFromCart,
+  dismFromCart,
 }: CardProductProps) {
   // const [quantity, setQuantity] = useState(0);
   const stock = product.stock ?? 0;
@@ -34,7 +34,7 @@ export default function CardProduct({
   //   setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
   // };
   const handleDecrement = () => {
-    removeFromCart(product.name);
+    dismFromCart(product.name);
     // setQuantity(quantity - 1);
   };
 

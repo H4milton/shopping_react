@@ -8,9 +8,14 @@ import { ProductInCart } from "@/types/types";
 interface CartProps {
   onConfirmOrder: () => void;
   productsInCart: ProductInCart[];
+  removeFromCart: (name: string) => void;
 }
 
-export default function Cart({ onConfirmOrder, productsInCart }: CartProps) {
+export default function Cart({
+  onConfirmOrder,
+  productsInCart,
+  removeFromCart,
+}: CartProps) {
   const total = productsInCart.reduce(
     (totalAc, product) => totalAc + product.price * product.quantity,
     0
@@ -37,7 +42,11 @@ export default function Cart({ onConfirmOrder, productsInCart }: CartProps) {
         ) : (
           <div className="flex flex-col gap-4 mb-10">
             {productsInCart.map((product) => (
-              <CartItems key={product.name} product={product} />
+              <CartItems
+                key={product.name}
+                product={product}
+                removeFromCart={removeFromCart}
+              />
               //SUmamos total
             ))}
           </div>

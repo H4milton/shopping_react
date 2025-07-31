@@ -30,7 +30,7 @@ export default function Home() {
     });
   };
 
-  const removeFromCart = (name: string) => {
+  const dismFromCart = (name: string) => {
     setProductsInCart((prev) =>
       prev
         .map((item) =>
@@ -38,6 +38,16 @@ export default function Home() {
         )
         .filter((item) => item.quantity > 0)
     );
+  };
+
+  const removeFromCart = (name: string) => {
+    // dismFromCart(name);
+    // setTimeout(() => {
+    //   setProductsInCart((prev) =>
+    //     prev.filter((item) => item.name !== name)
+    //   );
+    // }, 1000);
+    setProductsInCart((prev) => prev.filter((item) => item.name !== name));
   };
 
   const resetCart = () => {
@@ -53,11 +63,12 @@ export default function Home() {
           products={products}
           productsInCart={productsInCart}
           addToCart={addToCart}
-          removeFromCart={removeFromCart}
+          dismFromCart={dismFromCart}
         />
         <Cart
           onConfirmOrder={handleOpenModal}
           productsInCart={productsInCart}
+          removeFromCart={removeFromCart}
         />
         <CartModal
           open={isModalOpen}
