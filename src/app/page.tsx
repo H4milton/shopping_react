@@ -51,6 +51,7 @@ export default function Home() {
       <div className="lg:flex lg:gap-x-8 lg:items-start">
         <CardContainer
           products={products}
+          productsInCart={productsInCart}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
         />

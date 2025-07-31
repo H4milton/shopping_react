@@ -7,16 +7,18 @@ import Image from "next/image";
 
 type CardProductProps = {
   product: Product;
+  quantity: number;
   addToCart: (product: ProductInCart) => void;
   removeFromCart: (name: string) => void;
 };
 
 export default function CardProduct({
   product,
+  quantity, // 👈 viene desde arriba
   addToCart,
   removeFromCart,
 }: CardProductProps) {
-  const [quantity, setQuantity] = useState(0);
+  // const [quantity, setQuantity] = useState(0);
   const stock = product.stock ?? 0;
 
   const isOutOfStock = stock === 0;
@@ -24,7 +26,7 @@ export default function CardProduct({
   const handleIncrement = () => {
     if (quantity < stock) {
       addToCart({ ...product, quantity: 1 });
-      setQuantity(quantity + 1);
+      // setQuantity(quantity + 1);
     }
   };
 
@@ -33,7 +35,7 @@ export default function CardProduct({
   // };
   const handleDecrement = () => {
     removeFromCart(product.name);
-    setQuantity(quantity - 1);
+    // setQuantity(quantity - 1);
   };
 
   return (

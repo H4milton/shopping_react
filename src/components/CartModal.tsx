@@ -35,7 +35,7 @@ export default function CartModal({
   const closeAndFinish = () => {
     onClose();
     resetCart();
-    window.location.reload();
+    //window.location.reload();
   };
 
   return (
