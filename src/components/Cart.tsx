@@ -29,16 +29,15 @@ export default function Cart({
         </h2>
 
         {productsInCart.length === 0 ? (
-          <>
+          <div className="flex flex-col items-center justify-center">
             <Image
               src="/assets/images/illustration-empty-cart.svg"
               alt="An illustration of an empty shopping basket."
               width={128}
               height={128}
-              className="my-8"
             />
             <small>Your added items will appear here</small>
-          </>
+          </div>
         ) : (
           <div className="flex flex-col gap-4 mb-10">
             {productsInCart.map((product) => (
@@ -53,7 +52,11 @@ export default function Cart({
         )}
 
         <OrderTotal total={total} moneyFormat="$" />
-        <MyButton text="Confirm Order" onClick={onConfirmOrder} />
+        <MyButton
+          text="Confirm Order"
+          onClick={onConfirmOrder}
+          disabled={total === 0}
+        />
       </div>
     </>
   );

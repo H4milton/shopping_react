@@ -6,6 +6,7 @@ import Cart from "@/components/Cart";
 import CartModal from "@/components/CartModal";
 import { ProductInCart, Product } from "@/types/types";
 
+
 import { useState } from "react";
 
 export default function Home() {

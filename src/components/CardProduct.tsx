@@ -66,7 +66,7 @@ export default function CardProduct({
           {/* Fondo borroso */}
           <div className="absolute inset-0 bg-white/80 rounded-lg blur-sm shadow-md"></div>
           {/* Contenido de texto */}
-          <span className="relative block p-1 px-2">{stock} disponibles</span>
+          <span className="relative block p-1 px-2">{stock-quantity} disponibles</span>
         </div>
         {quantity === 0 ? (
           <button

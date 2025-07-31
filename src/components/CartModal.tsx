@@ -4,6 +4,7 @@ import CartModalItem from "./CartModalItem";
 import MyButton from "./elements/MyButton";
 import OrderTotal from "./elements/OrderTotal";
 import { ProductInCart } from "@/types/types";
+import { toast } from "sonner";
 
 interface CartModalProps {
   open: boolean;
@@ -35,7 +36,19 @@ export default function CartModal({
   const closeAndFinish = () => {
     onClose();
     resetCart();
-    //window.location.reload();
+
+    toast("¡Orden finalizada con éxito!", {
+      description: "Tu pedido se ha enviado exitosamente 🚴‍♂️",
+      action: {
+        label: "Aceptar",
+        onClick: () => {
+          // lógica para revertir el pedido
+          toast.error("El pedido ha sido cancelado");
+          console.log("Pedido cancelado");
+        },
+      },
+      duration: 6000, // opcional: cuánto tiempo permanece visible
+    });
   };
 
   return (
@@ -61,7 +74,11 @@ export default function CartModal({
           ))}
           <OrderTotal total={total} moneyFormat="$" />
         </div>
-        <MyButton text="Start New Order" onClick={closeAndFinish} />
+        <MyButton
+          text="Start New Order"
+          onClick={closeAndFinish}
+          disabled={total === 0}
+        />
       </div>
     </dialog>
   );
