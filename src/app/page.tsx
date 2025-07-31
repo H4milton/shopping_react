@@ -6,7 +6,6 @@ import Cart from "@/components/Cart";
 import CartModal from "@/components/CartModal";
 import { ProductInCart, Product } from "@/types/types";
 
-
 import { useState } from "react";
 
 export default function Home() {
@@ -57,7 +56,7 @@ export default function Home() {
 
   return (
     <main className="items-center px-6 md:px-12 lg:px-32">
-      <h1 className="w-full text-4xl font-bold text-left mb-10">My shop</h1>
+      <h1 className="w-full text-4xl font-bold text-left mb-10">Mi Tienda</h1>
 
       <div className="lg:flex lg:gap-x-8 lg:items-start">
         <CardContainer

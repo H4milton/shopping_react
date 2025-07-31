@@ -21,11 +21,13 @@ export default function Cart({
     0
   );
 
+  const quantityProducts = productsInCart.length;
+
   return (
     <>
       <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg flex flex-col lg:w-[400px] self-start">
         <h2 className="text-xl font-bold w-full text-left mb-8">
-          Your Cart (0)
+          Tu Carrito ({quantityProducts})
         </h2>
 
         {productsInCart.length === 0 ? (
@@ -36,7 +38,7 @@ export default function Cart({
               width={128}
               height={128}
             />
-            <small>Your added items will appear here</small>
+            <small>Los artículos que agregues aparecerán aquí</small>
           </div>
         ) : (
           <div className="flex flex-col gap-4 mb-10">
@@ -53,7 +55,7 @@ export default function Cart({
 
         <OrderTotal total={total} moneyFormat="$" />
         <MyButton
-          text="Confirm Order"
+          text="Confirmar Pedido"
           onClick={onConfirmOrder}
           disabled={total === 0}
         />

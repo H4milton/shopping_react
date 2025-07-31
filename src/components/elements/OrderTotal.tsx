@@ -8,7 +8,7 @@ interface OrderTotalProps {
 export default function OrderTotal({ total, moneyFormat }: OrderTotalProps) {
   return (
     <div className="flex items-baseline justify-between p-4">
-      <p>Order Total</p>
+      <p>Total orden</p>
       <p className="font-bold text-2xl">
         {moneyFormat}
         {total.toFixed(2)}

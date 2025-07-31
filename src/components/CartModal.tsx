@@ -57,7 +57,7 @@ export default function CartModal({
       onClick={handleBackdropClick}
       className="w-full h-full  top-0 left-0 fixed z-50 flex items-center justify-center bg-white/50 backdrop-blur-sm"
     >
-      <div className="bg-white rounded-2xl p-8 m-10 w-[400px] relative border-gray-300/50 border-1">
+      <div className="bg-white rounded-2xl p-8 m-10 w-[400px] relative shadow-2xl">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-400 hover:text-gray-700"
@@ -66,8 +66,8 @@ export default function CartModal({
         </button>
 
         <FiCheckCircle className="text-green-500 text-4xl mb-4 top-2" />
-        <h1 className="text-4xl font-bold">Order confirmation</h1>
-        <p>We hope you enjoy your food!</p>
+        <h1 className="text-4xl font-bold">Confirmar Orden</h1>
+        <p>Esperamos que disfrutes de tu comida!</p>
         <div className="p-5">
           {productsInCart.map((product) => (
             <CartModalItem key={product.name} product={product} />
@@ -75,7 +75,7 @@ export default function CartModal({
           <OrderTotal total={total} moneyFormat="$" />
         </div>
         <MyButton
-          text="Start New Order"
+          text="Finalizar Pedido"
           onClick={closeAndFinish}
           disabled={total === 0}
         />
