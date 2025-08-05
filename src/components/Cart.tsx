@@ -4,22 +4,31 @@ import CartItems from "./CartItems";
 import OrderTotal from "./elements/OrderTotal";
 import MyButton from "./elements/MyButton";
 import { ProductInCart } from "@/types/types";
+import { useCartStore } from "@/store/cart.store";
 
-interface CartProps {
-  onConfirmOrder: () => void;
-  productsInCart: ProductInCart[];
-  removeFromCart: (name: string) => void;
-}
+// interface CartProps {
+//   // onConfirmOrder: () => void;
+//   // productsInCart: ProductInCart[];
+//   // removeFromCart: (name: string) => void;
+// }
 
-export default function Cart({
-  onConfirmOrder,
-  productsInCart,
-  removeFromCart,
-}: CartProps) {
-  const total = productsInCart.reduce(
-    (totalAc, product) => totalAc + product.price * product.quantity,
-    0
-  );
+export default function Cart(
+  {
+    // onConfirmOrder,
+    // productsInCart,
+    // removeFromCart,
+  }
+) {
+  // const total = productsInCart.reduce(
+  //   (totalAc, product) => totalAc + product.price * product.quantity,
+  //   0
+  // );
+
+  const productsInCart = useCartStore((state) => state.productsInCart);
+  const removeFromCart = useCartStore((state) => state.dismFromCart);
+  const total = useCartStore((state) => state.total);
+
+  const { toggleModal } = useCartStore();
 
   const quantityProducts = productsInCart.length;
 
@@ -56,7 +65,7 @@ export default function Cart({
         <OrderTotal total={total} moneyFormat="$" />
         <MyButton
           text="Confirmar Pedido"
-          onClick={onConfirmOrder}
+          onClick={toggleModal}
           disabled={total === 0}
         />
       </div>
