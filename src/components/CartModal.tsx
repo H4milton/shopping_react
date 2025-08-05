@@ -25,7 +25,9 @@ export default function CartModal(
   const productsInCart = useCartStore((state) => state.productsInCart);
   const total = useCartStore((state) => state.total);
   const resetCart = useCartStore((state) => state.resetCart);
-  const { modaIsOpen, toggleModal } = useCartStore();
+  const modaIsOpen = useCartStore((state) => state.modaIsOpen);
+  const toggleModal = useCartStore((state) => state.toggleModal);
+  // const { modaIsOpen, toggleModal } = useCartStore();
 
   if (!modaIsOpen) return null;
 
