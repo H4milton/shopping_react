@@ -4,8 +4,8 @@ import { ProductInCart, Product } from "@/types/types";
 interface CartState {
   modaIsOpen: boolean;
   total: number;
-  toggleModal: () => void;
   productsInCart: ProductInCart[];
+  toggleModal: () => void;
   addToCart: (product: ProductInCart) => void;
   dismFromCart: (name: string) => void;
   removeFromCart: (name: string) => void;
@@ -19,7 +19,22 @@ export const useCartStore = create<CartState>((set, get) => ({
   productsInCart: [],
 
   //Cambiar estado de modalIsOpen tipo toggle
+  //✅ FORMA 1: Retorno implícito (forma corta ✅ recomendada si es simple)
   toggleModal: () => set((state) => ({ modaIsOpen: !state.modaIsOpen })),
+
+  //✅ FORMA 2: Retorno explícito con return
+  // toggleModal: () =>
+  // set((state) => {
+  //   return { modaIsOpen: !state.modaIsOpen }
+  // }),
+
+  //✅ FORMA 4: Función clásica (function expression)
+  // toggleModal: function () {
+  //   set(function (state) {
+  //     return { modaIsOpen: !state.modaIsOpen };
+  //   });
+  // },
+  
 
   addToCart: (product: ProductInCart) => {
     const prev = get().productsInCart;
@@ -73,6 +88,8 @@ export const useCartStore = create<CartState>((set, get) => ({
     set({ total });
   },
 }));
+
+
 
 // export const useCartStore = create<CartState>()((et, get)=>({
 //   total: 0,
